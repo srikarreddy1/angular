@@ -1,0 +1,119 @@
+<html>
+    <head>
+        <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+        <!-- <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"> -->
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"> 
+    </head>
+<body>
+    <section class="content-header">
+      <h1>
+        Dashboard      <small>Control panel</small>
+      </h1>
+      <ol class="breadcrumb">
+        <li><a href="#"><i class="fa fa-dashboard"></i> Home</a></li>
+        <li class="active">Issue Books</li>
+      </ol>
+    </section>
+    
+      <form >
+          <div class="main col-sm-6" id="main" style="background-color: white;">
+          <div class="panel-heading" id="panel-heading">
+              <div class="pannel-title">
+                  <strong>
+                      Issue Book
+                  </strong>
+              </div>
+          </div>
+          <div class="panel-body col-sm-12">
+              <div class="form-group mb0 col-sm-12">
+                  <label>BookId:</label>
+                  <input type="text" placeholder="type 12345 to see magic" class="form-control" ngModel id="bookid" required minlength="4" #bookid="ngModel" name="bookid" (keyup)="bookChanges(bookid.value)">
+                  <div *ngIf="bookid.errors?.required" style="background-color: rgb(245, 163, 148);padding-left:10px;">  student id is required.</div>
+                  <div *ngIf="bookid.errors?.minlength" style="background-color: rgb(245, 163, 148);padding-left:10px;">student id must be at least 4 characters long.</div>
+              </div>
+              <div class="form-group mb0 col-sm-12">
+
+                <label>BookName</label>
+
+                <input name="Book_name" 
+                       placeholder="book Name" class="form-control" type="text"  [(ngModel)]="defaultBookName" [disabled]="booknameval">
+              </div>
+             
+            <div class="form-group mb0 col-sm-12">
+                <table class="table table-bordered"
+                       style="border: 1px solid lightgrey;" [hidden]="myvaluebook">
+                  <tbody>
+                  <tr>
+                    <td style="background: beige;">Total Oty</td>
+                    <td>NA</td>
+                    <td style="background: beige;">Current Available</td>
+                    <td>NA</td>
+                    <td style="background: beige;">Borrowed</td>
+                    <td>NA</td>
+                  </tr>
+                  <tr>
+                    <td style="background: beige;">Price</td>
+                    <td>NA</td>
+                    <td style="background: beige;">ISBN</td>
+                    <td colspan="3">NA</td>
+                  </tr>
+                  </tbody>
+                </table>
+              </div>
+
+              <div class="form-group mb0 col-sm-12">
+                <label>Student Id</label>
+                <input name="user_id" 
+                        placeholder="Type User ID. Eg :12345"
+                       class="form-control" type="text" ngModel id="stuid" required minlength="4" #stuid="ngModel" name="stuid" (keyup)="stuidChange(stuid.value)">
+                       <div *ngIf="stuid.errors?.required" style="background-color: rgb(245, 163, 148);padding-left:10px;">  bookid is required.</div>
+                      <div *ngIf="stuid.errors?.minlength" style="background-color: rgb(245, 163, 148);padding-left:10px;">bookid must be at least 4 characters long.</div>
+              </div>
+
+
+              <div class="form-group mb0 col-sm-12">
+
+                <label>Name</label>
+
+                <input name="user_name" 
+                       placeholder="Persons Name" class="form-control" type="text"  [(ngModel)]="defaultStudentName" [disabled]="nameval">
+
+
+              </div>
+              <div class="form-group mb0 col-sm-12">
+                <table class="table table-bordered" [hidden]="myvalueid"
+                       style="border: 1px solid lightgrey;">
+                  <tbody>
+                  <tr>
+                    <td style="background: beige;">Phone</td>
+                    <td>NA</td>
+                    <td style="background: beige;">Email</td>
+                    <td>NA</td>
+                  </tr>
+                  <tr>
+                    <td style="background: beige;">Address</td>
+                    <td colspan="4">NA</td>
+                  </tr>
+                  </tbody>
+                </table>
+              </div>
+            <div class="from-group row-sm-12">
+            <div class="form-group mb0 col-sm-6">
+                <label>IssueDate:</label>
+                <input type="date" class="form-control" name="issuedate" ngModel id="issuedate" required #issuedate="ngModel">
+                <div *ngIf="issuedate.errors?.required" style="background-color: rgb(245, 163, 148);padding-left:10px;">  issuedate is required.</div>
+            </div>
+            <div class="form-group mb0 col-sm-6">
+                <label>ReturnDate:</label>
+                <input type="date" class="form-control" name="returndate" ngModel id="returndate" required #returndate="ngModel">
+                <div *ngIf="returndate.errors?.required" style="background-color: rgb(245, 163, 148);padding-left:10px;">  return is required.</div>
+            </div>
+            </div>
+            <div class="form-group mb0 col-sm-12">
+            <button type="submit" class="btn btn-danger pmd-ripple-effect pull-right" id="btn">submit</button>
+            </div>
+          </div>
+          </div>
+      </form>
+</body>
+</html>
